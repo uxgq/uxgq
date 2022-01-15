@@ -1,7 +1,7 @@
 import React, { memo, Fragment } from 'react';
 import { cx, __DEV__ } from '../helpers';
 import { ISidesheetProps } from './types';
-import { Dialog, Menu, Transition } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import { useSidesheetClass } from './styles';
 
 const noop = () => {};
