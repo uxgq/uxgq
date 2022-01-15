@@ -6,5 +6,5 @@ export type { IStackProps } from "./stack";
 export { Positioner } from './positioner';
 export type { IPositionerProps } from "./positioner";
 
-export { Sidesheet } from './sidesheet';
+export { Sidesheet, SidesheetHeader } from './sidesheet';
 export type { ISidesheetProps } from "./sidesheet";
