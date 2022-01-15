@@ -4,11 +4,11 @@ import StackingContext from './StackingContext';
 
 export interface IStackProps {
   value?: number;
-  children: (zIndex: number) => React.ReactNode;
+  children: (current: number) => React.ReactNode;
 }
 
 export const Stack: React.FC<IStackProps> = memo(props => {
-  const { value = 1000, children } = props;
+  const { value = 1, children } = props;
   const previousValue = useContext(StackingContext);
   const currentValue = Math.max(value, previousValue);
   const nextValue = currentValue + 1;

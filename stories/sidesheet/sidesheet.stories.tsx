@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Sidesheet, ISidesheetProps, Button } from '../../src';
 import { useState } from '@storybook/addons';
+import { useDisclosure } from '../../src/hooks';
 
 const meta: Meta = {
   title: 'Sidesheet',
@@ -38,8 +39,19 @@ const Template: Story<ISidesheetProps> = ({ position }) => {
         position={position}
         onClose={() => setShown(false)}
       >
-        See popover or tooltip story for now.
+        <Nested />
       </Sidesheet>
+    </div>
+  );
+};
+
+const Nested = () => {
+  const { isOpen, onClose, onToggle } = useDisclosure();
+
+  return (
+    <div>
+      <Button onClick={onToggle}>Nested</Button>
+      <Sidesheet isOpen={isOpen} onClose={onClose}></Sidesheet>
     </div>
   );
 };

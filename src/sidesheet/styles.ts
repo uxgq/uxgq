@@ -5,10 +5,10 @@ import { ISidesheetPosition } from './types';
 const direction = (position?: ISidesheetPosition) => {
   switch (position) {
     case 'right': {
-      return 'right-0 pl-10 sm:pl-16';
+      return 'right-0';
     }
     case 'left': {
-      return 'left-0 pr-10 sm:pr-16';
+      return 'left-0';
     }
   }
 
