@@ -21,7 +21,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ISidesheetProps> = ({ position }) => {
+const Template: Story<ISidesheetProps> = ({ position, size }) => {
   const [isShown, setShown] = useState(false);
 
   return (
@@ -37,6 +37,7 @@ const Template: Story<ISidesheetProps> = ({ position }) => {
       <Sidesheet
         isOpen={isShown}
         position={position}
+        size={size}
         onClose={() => setShown(false)}
       >
         <Nested />

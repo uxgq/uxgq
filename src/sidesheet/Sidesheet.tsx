@@ -1,6 +1,6 @@
 import React, { memo, Fragment } from 'react';
 import { cx, __DEV__ } from '../helpers';
-import { ISidesheetProps } from './types';
+import { ISidesheetProps, ISidesheetSize } from './types';
 import { Dialog, Transition } from '@headlessui/react';
 import { useSidesheetClass } from './styles';
 import { Stack } from '..';
@@ -13,10 +13,32 @@ const getOffset = (depth: number) => {
   return offset * depth + 1;
 };
 
+const getMaxWidth = (depth: number, size: ISidesheetSize) => {
+  switch (size) {
+    case 'sm': {
+      return '24rem';
+    }
+    case 'md': {
+      return '28rem';
+    }
+    case 'lg': {
+      return '42rem';
+    }
+    case 'half': {
+      return '50vw';
+    }
+    default: {
+      const offset = getOffset(depth + 1);
+      return `calc(100vw - ${offset}px)`;
+    }
+  }
+};
+
 export const Sidesheet: React.FC<ISidesheetProps> = memo(props => {
   const {
     isOpen = false,
     position = 'right',
+    size = 'default',
     children,
     onClose = noop,
   } = props;
@@ -60,7 +82,7 @@ export const Sidesheet: React.FC<ISidesheetProps> = memo(props => {
                   <div
                     className="w-screen"
                     style={{
-                      maxWidth: `calc(100vw - ${getOffset(current + 1)}px)`,
+                      maxWidth: getMaxWidth(current, size),
                     }}
                   >
                     <div className="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
